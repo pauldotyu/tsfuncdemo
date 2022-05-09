@@ -1,5 +1,9 @@
 provider "azurerm" {
-  features {}
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = false
+    }
+  }
 }
 
 resource "random_pet" "pet" {
@@ -100,7 +104,7 @@ resource "local_file" "fn" {
   filename = "SampleTest.jmx"
   content = templatefile("SampleTest.jmx.tmpl",
     {
-      YOUR_ENDPOINT_URL = "https://${local.resource_name}.azurewebsites.net/api/httpexample?name=Paul",
+      YOUR_DOMAIN = "${local.resource_name}.azurewebsites.net",
     }
   )
 }
