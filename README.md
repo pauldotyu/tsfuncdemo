@@ -70,3 +70,15 @@ console.log("Attempting to connect to " + process.env.REDISCACHEHOSTNAME);
 cacheConnection.connect();
 console.log("Connected to " + process.env.REDISCACHEHOSTNAME);
 ```
+
+If you don't already have a `local.settings.json` file in your repo, create the file and add this:
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": ""
+  }
+}
+```
